@@ -49,7 +49,7 @@ class YoutubePage extends Component {
 
     changeSelectecVideo = (video) => {
         console.log('==============>',video)
-        this.setState({ selectedVideo: video })
+        this.setState({ selectedVideo: video });
     }
 
     render(){
@@ -57,19 +57,21 @@ class YoutubePage extends Component {
         return (
             <MuiThemeProvider theme={theme}>
                 <NavBar color="primary" position="static" onSubmit={this.onSubmit} />
-                <Grid container spacing={24} style={{margin: 'auto'}}>
-                    {
-                        items.length > 0 && (
-                        <Fragment>
-                            <Grid item xs={12} sm={6} style={{marginTop:'20px'}}>
-                                <VideoDisplay {...selectedVideo}/>
-                            </Grid>
-                            <Grid item xs={12} sm={6}>
-                                <CardList items={items} changeSelectecVideo={this.changeSelectecVideo} />
-                            </Grid>
-                        </Fragment>)
-                    }
-                </Grid>
+                <div style={{ padding: 20 }}>
+                    <Grid container spacing={24}>
+                        {
+                            items.length > 0 && (
+                            <Fragment>
+                                <Grid item xs={12} sm={6} style={{marginTop:'20px'}}>
+                                    <VideoDisplay {...selectedVideo}/>
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
+                                    <CardList items={items} changeSelectecVideo={this.changeSelectecVideo} />
+                                </Grid>
+                            </Fragment>)
+                        }
+                    </Grid>
+                </div>
             </MuiThemeProvider>
         )
     }

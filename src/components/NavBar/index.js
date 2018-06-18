@@ -91,6 +91,7 @@ class NavBar extends PureComponent {
                 ref={node => {
                     this.input = node;
                 }}
+                placeholder="Busca"
                 onChange={this.handleInput}
                 className={classes.input}
             />
