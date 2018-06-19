@@ -1,12 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import NavBar from '../../components/NavBar';
-import YTSearch from 'youtube-api-search';
 import { API_KEY } from '../../constants';
 import CardList from '../../components/CardList';
 import VideoDisplay from '../../components/VideoDisplay';
 import Grid from '@material-ui/core/Grid';
-import YoutubeSearch from '../../utils/YoutubeApiSearch';
+import { YoutubeSearch } from '../../utils/YoutubeApiSearch';
 
 const theme = createMuiTheme({
     palette: {
@@ -40,8 +39,8 @@ class YoutubePage extends Component {
     onSubmit = (term) => {
         YoutubeSearch({
             key: API_KEY,
-            maxResults: 25,
-            term
+            q: term,
+            maxResults: 25
         },
         (data) => {
             console.log(data)
@@ -65,7 +64,7 @@ class YoutubePage extends Component {
                             items.length > 0 && (
                             <Fragment>
                                 <Grid item xs={12} sm={6} style={{marginTop:'20px'}}>
-                                    <VideoDisplay {...selectedVideo}/>
+                                    <VideoDisplay video={selectedVideo}/>
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
                                     <CardList items={items} changeSelectecVideo={this.changeSelectecVideo} />

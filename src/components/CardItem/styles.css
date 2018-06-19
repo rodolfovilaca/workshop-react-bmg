@@ -29,3 +29,12 @@
     color: #ffffff;
     opacity: .5;
   }
+
+.card-item {
+    padding: 2px;
+    background-color: #ffffff;
+    border-radius: 2px;
+}
+.avatar-container{
+    margin: auto !important;
+}
