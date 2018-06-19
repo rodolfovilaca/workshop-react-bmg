@@ -6,6 +6,7 @@ import { API_KEY } from '../../constants';
 import CardList from '../../components/CardList';
 import VideoDisplay from '../../components/VideoDisplay';
 import Grid from '@material-ui/core/Grid';
+import YoutubeSearch from '../../utils/YoutubeApiSearch';
 
 const theme = createMuiTheme({
     palette: {
@@ -37,8 +38,9 @@ class YoutubePage extends Component {
     }
 
     onSubmit = (term) => {
-        YTSearch({
+        YoutubeSearch({
             key: API_KEY,
+            maxResults: 25,
             term
         },
         (data) => {
