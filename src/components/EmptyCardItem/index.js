@@ -1,7 +1,6 @@
 import React from 'react';
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from '@material-ui/core/CardContent';
-import './styles.css';
 
 const EmptyCardItem = (props) => {
     return (

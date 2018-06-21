@@ -6,6 +6,7 @@ import CardList from '../../components/CardList';
 import VideoDisplay from '../../components/VideoDisplay';
 import Grid from '@material-ui/core/Grid';
 import { YoutubeSearch } from '../../utils/YoutubeApiSearch';
+import EmptyCardList from '../../components/EmptyCardList';
 
 const theme = createMuiTheme({
     palette: {
@@ -32,11 +33,13 @@ class YoutubePage extends Component {
         super(props);
         this.state = {
             items: [],
-            selectedVideo: {}
+            selectedVideo: undefined,
+            loadingCards: false
         }
     }
 
     onSubmit = (term) => {
+        this.setState({loadingCards: true})
         YoutubeSearch({
             key: API_KEY,
             q: term,
@@ -44,7 +47,8 @@ class YoutubePage extends Component {
         },
         (data) => {
             console.log(data)
-            return this.setState({items: data, selectedVideo: data[0] })
+            this.setState({selectedVideo: data[0]})
+            return setTimeout(() => this.setState({items: data, loadingCards: false }), 10000)
         })
     }
 
@@ -54,22 +58,27 @@ class YoutubePage extends Component {
     }
 
     render(){
-        const { items, selectedVideo } = this.state;
+        const { items, selectedVideo, loadingCards } = this.state;
         return (
             <MuiThemeProvider theme={theme}>
                 <NavBar color="primary" position="static" onSubmit={this.onSubmit} />
                 <div style={{ padding: 20 }}>
-                    <Grid container spacing={24}>
+                    <Grid container spacing={24} justify="flex-end">
                         {
-                            items.length > 0 && (
-                            <Fragment>
-                                <Grid item xs={12} sm={6} style={{marginTop:'20px'}}>
-                                    <VideoDisplay video={selectedVideo}/>
+                            selectedVideo && (
+                            <Grid item xs={12} sm={6} style={{marginTop:'20px'}}>
+                                <VideoDisplay video={selectedVideo}/>
+                            </Grid>)
+                        }
+                        {
+                            loadingCards ? (
+                                <Grid item xs={12} sm={6}>
+                                    <EmptyCardList items={items} changeSelectecVideo={this.changeSelectecVideo} />
                                 </Grid>
+                            ) : items.length > 0 && (
                                 <Grid item xs={12} sm={6}>
                                     <CardList items={items} changeSelectecVideo={this.changeSelectecVideo} />
-                                </Grid>
-                            </Fragment>)
+                                </Grid>)
                         }
                     </Grid>
                 </div>
