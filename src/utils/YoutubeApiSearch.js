@@ -3,16 +3,17 @@ import { YOUTUBE_API_PATH } from '../constants';
 
 export const YoutubeSearch = (options, callback) => {
   if (!options.key) {
-    throw new Error("Você deve fornecer uma key.");
+    throw new Error('Você deve fornecer uma key.');
   }
 
   const params = {
-    part: "snippet",
-    type: "video",
+    part: 'snippet',
+    type: 'video',
     ...options
   };
 
-  axios.get(YOUTUBE_API_PATH + "/search", { params: params })
+  axios
+    .get(YOUTUBE_API_PATH + '/search', { params: params })
     .then(function(response) {
       if (callback) {
         callback(response.data.items);
@@ -24,22 +25,23 @@ export const YoutubeSearch = (options, callback) => {
 };
 
 export const ChannelSearch = (options, callback) => {
-    if (!options.key) {
-        throw new Error("Você deve fornecer uma key.");
+  if (!options.key) {
+    throw new Error('Você deve fornecer uma key.');
+  }
+
+  const params = {
+    part: 'snippet',
+    ...options
+  };
+
+  axios
+    .get(YOUTUBE_API_PATH + '/channels', { params: params })
+    .then(function(response) {
+      if (callback) {
+        callback(response.data.items[0]);
       }
-    
-      const params = {
-        part: "snippet",
-        ...options
-      };
-    
-      axios.get(YOUTUBE_API_PATH + "/channels", { params: params })
-        .then(function(response) {
-          if (callback) {
-            callback(response.data.items[0]);
-          }
-        })
-        .catch(function(error) {
-          console.error(error);
-        });
-}
+    })
+    .catch(function(error) {
+      console.error(error);
+    });
+};

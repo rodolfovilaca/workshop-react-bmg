@@ -1,40 +1,44 @@
-@media (min-width: 600px){
-    .MuiListItem-gutters-181 {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-    }
+@media (min-width: 600px) {
+  .MuiListItem-gutters-181 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 }
 .MuiListItem-gutters-181 {
-    padding-left: 3px !important;
-    padding-right: 3px !important;
+  padding-left: 3px !important;
+  padding-right: 3px !important;
 }
 .MuiListItem-default-177 {
-    padding-top: 0 !important;
-    padding-bottom: 4px !important;
+  padding-top: 0 !important;
+  padding-bottom: 4px !important;
 }
 
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    color: #ffffff;
-    opacity: .5;
-  }
-  ::-moz-placeholder { /* Firefox 19+ */
-    color: #ffffff;
-    opacity: .5;
-  }
-  :-ms-input-placeholder { /* IE 10+ */
-    color: #ffffff;
-    opacity: .5;
-  }
-  :-moz-placeholder { /* Firefox 18- */
-    color: #ffffff;
-    opacity: .5;
-  }
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #ffffff;
+  opacity: 0.5;
+}
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #ffffff;
+  opacity: 0.5;
+}
+:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #ffffff;
+  opacity: 0.5;
+}
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #ffffff;
+  opacity: 0.5;
+}
 
 .card-item {
-    padding: 2px;
-    background-color: #ffffff;
-    border-radius: 2px;
+  padding: 2px;
+  background-color: #ffffff;
+  border-radius: 2px;
 }
-.avatar-container{
-    margin: auto !important;
+.avatar-container {
+  margin: auto !important;
 }
