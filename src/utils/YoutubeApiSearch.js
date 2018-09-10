@@ -15,7 +15,7 @@ export const YoutubeSearch = (options, callback) => {
   axios.get(YOUTUBE_API_PATH + "/search", { params: params })
     .then(function(response) {
       if (callback) {
-        callback(response.data.items);
+        callback(response.data.items, response.data.nextPageToken, response.data.pageInfo.totalResults);
       }
     })
     .catch(function(error) {
